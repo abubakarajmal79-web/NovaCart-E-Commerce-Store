@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCart - CodeAlpha E-Commerce Store</title>
+  <meta name="description" content="A full-stack e-commerce web application featuring user authentication, product catalog, cart management, and order processing with Node.js, Express, and SQLite.">
+  <meta property="og:title" content="NovaCart - CodeAlpha E-Commerce Store">
+  <meta property="og:description" content="A full-stack e-commerce web application featuring user authentication, product catalog, cart management, and order processing with Node.js, Express, and SQLite.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>NovaCart</span>
+        <span class="brand-badge">CodeAlpha</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link active">Home</a></li>
+        <li><a href="/index.html#catalog" class="nav-link">Catalog</a></li>
+        <li><a href="/orders.html" class="nav-link">My Orders</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/cart.html" class="cart-btn" id="nav-cart-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span>
+        </a>
+
+        <div class="auth-nav" id="nav-auth-container">
+          <!-- Populated dynamically by api.js -->
+          <a href="/login.html" class="btn btn-outline btn-sm">Login</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">🚀 CodeAlpha Internship Project — Task 1</span>
+        <h1 class="hero-title">Next-Gen Tech & Lifestyle Essentials.</h1>
+        <p class="hero-subtitle">
+          Explore curated wireless audio, ergonomic setups, and productivity electronics with live SQLite database inventory and instant order fulfillment.
+        </p>
+        <div class="hero-perks">
+          <div class="perk-item">
+            <span>✓</span>
+            <span>Free Express Shipping over $75</span>
+          </div>
+          <div class="perk-item">
+            <span>✓</span>
+            <span>30-Day Money Back Guarantee</span>
+          </div>
+          <div class="perk-item">
+            <span>✓</span>
+            <span>Real-time SQLite Stock Tracking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Catalog Content -->
+  <main class="container" id="catalog">
+    <!-- Filter & Search Toolbar -->
+    <section class="toolbar">
+      <div class="toolbar-top">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search audio, laptops, keyboards, webcams..." 
+            aria-label="Search products"
+          />
+        </div>
+
+        <div class="sort-box">
+          <label for="sort-select" style="font-size: 0.85rem; font-weight: 600; color: #64748b;">Sort by:</label>
+          <select id="sort-select" aria-label="Sort products">
+            <option value="">Featured</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+            <option value="rating_desc">Highest Customer Rating</option>
+            <option value="name_asc">Alphabetical (A - Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills" id="category-pills">
+        <button class="category-pill active" data-category="all">All Products</button>
+      </div>
+    </section>
+
+    <!-- Catalog Header -->
+    <div class="section-header">
+      <h2 class="section-title">Trending Catalog</h2>
+      <span class="product-count" id="product-count">Loading products...</span>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="product-grid" id="products-grid">
+      <!-- Injected by products.js -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="color: white; margin-bottom: 0.5rem;">
+            <span class="brand-icon">⚡</span>
+            <span>NovaCart</span>
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.5; color: #94a3b8; margin-bottom: 1rem;">
+            A full-stack e-commerce store with Node.js, Express, SQLite, and vanilla frontend architecture.
+          </p>
+          <span class="internship-tag">CodeAlpha Internship — Full Stack Task 1</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/index.html#catalog">Products</a></li>
+            <li><a href="/cart.html">Shopping Cart</a></li>
+            <li><a href="/orders.html">My Orders</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul class="footer-links">
+            <li><a href="/login.html">Sign In</a></li>
+            <li><a href="/register.html">Create Account</a></li>
+            <li><a href="/orders.html">Order History</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Security & Tech</h4>
+          <ul class="footer-links">
+            <li><span>Node.js & Express</span></li>
+            <li><span>SQLite3 Database</span></li>
+            <li><span>Bcrypt Hash Security</span></li>
+            <li><span>RESTful API Design</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaCart. Built for CodeAlpha Full Stack Web Development Internship.</p>
+        <p>Demo Account: <strong>test@example.com</strong> / <strong>Password123!</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/js/api.js"></script>
+  <script type="module" src="/js/products.js"></script>
+</body>
+</html>

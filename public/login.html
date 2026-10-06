@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | NovaCart</title>
+  <meta name="description" content="Sign in to your NovaCart account to track orders and checkout faster.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>NovaCart</span>
+        <span class="brand-badge">CodeAlpha</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/index.html#catalog" class="nav-link">Catalog</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/cart.html" class="cart-btn" id="nav-cart-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Form Container -->
+  <main class="container">
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to manage your orders and personal account</p>
+
+        <!-- Quick 1-Click Demo Testing Box -->
+        <div class="demo-account-box">
+          <div class="demo-account-text">
+            <strong>Demo Account:</strong><br>
+            test@example.com / Password123!
+          </div>
+          <button type="button" id="fill-demo-btn" class="btn btn-primary btn-sm">Auto-Fill</button>
+        </div>
+
+        <div id="auth-error" class="alert-box alert-danger" style="display: none;"></div>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control" 
+              placeholder="you@example.com" 
+              required 
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label for="password" class="form-label">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              class="form-control" 
+              placeholder="••••••••" 
+              required 
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            Sign In
+          </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #64748b;">
+          Don't have an account? <a href="/register.html" style="color: #4f46e5; font-weight: 600;">Create one now</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaCart. Built for CodeAlpha Full Stack Web Development Internship.</p>
+        <p>Demo Account: <strong>test@example.com</strong> / <strong>Password123!</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/api.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

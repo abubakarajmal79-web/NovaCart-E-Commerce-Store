@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | NovaCart</title>
+  <meta name="description" content="Complete your purchase with secure server-side checkout on NovaCart.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>NovaCart</span>
+        <span class="brand-badge">CodeAlpha</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/index.html#catalog" class="nav-link">Catalog</a></li>
+        <li><a href="/orders.html" class="nav-link">My Orders</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/cart.html" class="cart-btn" id="nav-cart-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span>
+        </a>
+
+        <div class="auth-nav" id="nav-auth-container">
+          <a href="/login.html" class="btn btn-outline btn-sm">Login</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Checkout Container -->
+  <main class="container" style="padding-top: 1.5rem;">
+    <div class="checkout-layout">
+      <!-- Checkout Form -->
+      <section class="checkout-form-card">
+        <h1 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Express Checkout</h1>
+        <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 1.5rem;">
+          Enter your shipping destination. All pricing is recalculated and locked on our SQLite server.
+        </p>
+
+        <div id="checkout-error" class="alert-box alert-danger" style="display: none;"></div>
+
+        <form id="checkout-form">
+          <h3 class="form-section-title">👤 Contact Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="customer_name" class="form-label">Full Name *</label>
+              <input type="text" id="customer_name" class="form-control" placeholder="Alex Johnson" required />
+            </div>
+
+            <div class="form-group">
+              <label for="customer_email" class="form-label">Email Address *</label>
+              <input type="email" id="customer_email" class="form-control" placeholder="alex@example.com" required />
+            </div>
+
+            <div class="form-group full">
+              <label for="phone" class="form-label">Phone Number *</label>
+              <input type="tel" id="phone" class="form-control" placeholder="+1 (555) 234-5678" required />
+            </div>
+          </div>
+
+          <h3 class="form-section-title">📍 Shipping Destination</h3>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="shipping_address" class="form-label">Street Address *</label>
+              <input type="text" id="shipping_address" class="form-control" placeholder="124 Silicon Avenue, Suite 400" required />
+            </div>
+
+            <div class="form-group">
+              <label for="city" class="form-label">City *</label>
+              <input type="text" id="city" class="form-control" placeholder="San Francisco" required />
+            </div>
+
+            <div class="form-group">
+              <label for="postal_code" class="form-label">Postal / ZIP Code *</label>
+              <input type="text" id="postal_code" class="form-control" placeholder="94105" required />
+            </div>
+          </div>
+
+          <h3 class="form-section-title">💳 Payment Method</h3>
+          <div class="payment-options">
+            <label class="payment-card-label">
+              <input type="radio" name="payment_method" value="Credit / Debit Card" checked />
+              <span>Credit / Debit Card</span>
+            </label>
+            <label class="payment-card-label">
+              <input type="radio" name="payment_method" value="Cash on Delivery" />
+              <span>Cash on Delivery</span>
+            </label>
+          </div>
+
+          <div style="margin-top: 1.75rem;">
+            <button type="submit" id="place-order-btn" class="btn btn-primary btn-block btn-lg">
+              Place Order Now
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Order Summary Aside -->
+      <aside class="summary-card">
+        <h2 class="summary-title">Order Review</h2>
+        <div id="checkout-summary-items" style="max-height: 260px; overflow-y: auto; padding-right: 0.5rem; margin-bottom: 1.25rem;">
+          <p style="color: #64748b; font-size: 0.85rem;">Verifying items...</p>
+        </div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="checkout-subtotal" style="font-weight: 600;">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="checkout-shipping" style="font-weight: 600;">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Sales Tax (8%)</span>
+          <span id="checkout-tax" style="font-weight: 600;">$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="checkout-total" style="color: #4f46e5;">$0.00</span>
+        </div>
+
+        <div style="margin-top: 1.5rem; font-size: 0.82rem; color: #64748b; background: #f8fafc; padding: 0.75rem; border-radius: 8px;">
+          ✓ Stock is instantly reserved upon placing order<br>
+          ✓ Order totals are recalculated server-side
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaCart. Built for CodeAlpha Full Stack Web Development Internship.</p>
+        <p>Demo Account: <strong>test@example.com</strong> / <strong>Password123!</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/api.js"></script>
+  <script type="module" src="/js/checkout.js"></script>
+</body>
+</html>
